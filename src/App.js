@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
+import './reset.css'
 import './index.css'
 
 class App extends React.Component {
@@ -12,22 +13,23 @@ class App extends React.Component {
       completed: false,
     }
   }
-  h_setComplete = event => {
-    this.state.items[event.target.id].completed = true
+  h_toggleComplete = event => {
+    let items = this.state.items
+    items[event.target.id].completed = !items[event.target.id].completed
+    this.setState({items: items})
   }
   h_inputChange = event => {
     this.setState({value: event.target.value})
   }
-  h_clearCompleted = () => {
+  h_clearCompleted = event => {
     this.setState({
       items: this.state.items.filter(item => !item.completed),
       value: '',
-      completed: false,
     })
-    console.log(this.state.items)
   }
   h_addItem = event => {
     event.preventDefault()
+    if(this.state.value === '') return
     let newItem = {
       value: this.state.value,
       completed: this.state.completed,
@@ -36,15 +38,14 @@ class App extends React.Component {
       return {
         items: [...prevState.items, newItem],
         value: '',
-        completed: false,
       }
     })
   }
   render() {
     return (
-      <div className='todoapp'>
-        <h1>Todo List: MVP</h1>
-        <TodoList items={this.state.items} click={this.h_setComplete}/>
+      <div className='app'>
+        <h1>To Do List:</h1>
+        <TodoList items={this.state.items} click={this.h_toggleComplete}/>
         <TodoForm 
           value={this.state.value}
           add={this.h_addItem}
