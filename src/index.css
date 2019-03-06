@@ -11,6 +11,7 @@ body {
     background-color: #ccc;
     border: 1px solid #222;
     border-width: 2px 2px 1px 1px;
+    border-radius: 3px;
     color: #222;
     width: fit-content;
     display: flex;
