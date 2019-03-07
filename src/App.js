@@ -24,7 +24,6 @@ class App extends React.Component {
   }
   h_toggleCompleteParent = event => {
     // let's put a nice big strong x on the list
-    console.log(event.target)
     let items = this.state.items
     let target = event.target
     items[target.id].completed = !items[target.id].completed
@@ -32,7 +31,6 @@ class App extends React.Component {
   }
   h_toggleCompleteChild = event => {
     event.stopPropagation()
-    console.log(event.target)
     let items = this.state.items
     let target = event.target.parentNode
     items[target.id].completed = !items[target.id].completed
