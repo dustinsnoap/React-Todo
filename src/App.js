@@ -22,19 +22,19 @@ class App extends React.Component {
       this.setState({items: JSON.parse(localStorage.getItem('items'))})
     }
   }
-  h_toggleCompleteParent = event => {
+  toggleComplete = target => {
     // let's put a nice big strong x on the list
     let items = this.state.items
-    let target = event.target
     items[target.id].completed = !items[target.id].completed
     this.setState({items: items})
+    localStorage.setItem('items', JSON.stringify(items))
+  }
+  h_toggleCompleteParent = event => {
+    this.toggleComplete(event.target)
   }
   h_toggleCompleteChild = event => {
     event.stopPropagation()
-    let items = this.state.items
-    let target = event.target.parentNode
-    items[target.id].completed = !items[target.id].completed
-    this.setState({items: items})
+    this.toggleComplete(event.target.parentNode)
   }
   h_inputChange = event => {
     // talent is a pursued interest, anything that you're willing to type can be displayed
