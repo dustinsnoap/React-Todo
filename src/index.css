@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+
+body {
+    font-family: 'Gochi Hand', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.app {
+    background-color: #ccc;
+    border: 1px solid #222;
+    border-width: 2px 2px 1px 1px;
+    border-radius: 3px;
+    color: #222;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 50px;
+}
+.app h1 {
+    text-align: center;
+    font-size: 5rem;
+    color: #BC1010;
+}
+.app .items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.app .items .item {
+    display: flex;
+    font-size: 2.5rem;
+    align-items: center;
+    height: 50px;
+}
+.app .items .item .checkbox {
+    height: 25px;
+    width: 25px;
+    border: 2px solid black;
+    margin-right: 15px;
+    color: #BC1010;
+    font-size: 6rem;
+    line-height: 3rem;
+    text-indent: -.5rem;
+}
+.app .items .item.complete .item-text {
+    text-decoration: line-through wavy #BC1010;
+}
+.app .input-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+.app .input-form input {
+    height: 50px;
+    font-size: 3rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+    text-align: center;
+}
+.app .input-form .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.app .input-form button {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+    color: inherit;
+    font-size: 3.5rem;
+    outline: none;
+}
