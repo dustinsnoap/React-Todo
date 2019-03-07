@@ -22,10 +22,20 @@ class App extends React.Component {
       this.setState({items: JSON.parse(localStorage.getItem('items'))})
     }
   }
-  h_toggleComplete = event => {
+  h_toggleCompleteParent = event => {
     // let's put a nice big strong x on the list
+    console.log(event.target)
     let items = this.state.items
-    items[event.target.id].completed = !items[event.target.id].completed
+    let target = event.target
+    items[target.id].completed = !items[target.id].completed
+    this.setState({items: items})
+  }
+  h_toggleCompleteChild = event => {
+    event.stopPropagation()
+    console.log(event.target)
+    let items = this.state.items
+    let target = event.target.parentNode
+    items[target.id].completed = !items[target.id].completed
     this.setState({items: items})
   }
   h_inputChange = event => {
@@ -44,7 +54,7 @@ class App extends React.Component {
     })
   }
   h_addItem = event => {
-    // let's build a happy little list item
+    // let's build a happy little list item here
     if(this.state.value === '') return
     let newItem = {
       value: this.state.value,
@@ -52,7 +62,7 @@ class App extends React.Component {
     }
     this.setState(prevState => {
       let items = [...prevState.items, newItem]
-      // let's save a happy little list item
+      // let's save a happy little list item there
       localStorage.setItem('items', JSON.stringify(items))
       return {
         items: items,
@@ -64,8 +74,9 @@ class App extends React.Component {
     return (
       <div className='app'>
         <h1>To Do List:</h1>
-        <TodoList items={this.state.items} click={this.h_toggleComplete}/>
+        <TodoList items={this.state.items} click={{parent: this.h_toggleCompleteParent, child: this.h_toggleCompleteChild}}/>
         <TodoForm 
+// Nnnnnnnnnnnnnnnnnnnnice!
           value={this.state.value}
           add={this.h_addItem}
           clear={this.h_clearCompleted}

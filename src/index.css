@@ -39,14 +39,12 @@ body {
     width: 25px;
     border: 2px solid black;
     margin-right: 15px;
-    
-}
-.app .items .item .checkbox pre {
     color: #BC1010;
     font-size: 6rem;
-    transform: translate(-5px, -15px) rotateZ(-5deg);
+    line-height: 3rem;
+    text-indent: -.5rem;
 }
-.app .items .item .item-text.complete {
+.app .items .item.complete .item-text {
     text-decoration: line-through wavy #BC1010;
 }
 .app .input-form {
