@@ -66,6 +66,7 @@ class App extends React.Component {
         items: items,
         value: '',
       }
+// Nnnnnnnnnnnnnnnnnnnnice!
     })
   }
   render() {
@@ -74,7 +75,6 @@ class App extends React.Component {
         <h1>To Do List:</h1>
         <TodoList items={this.state.items} click={{parent: this.h_toggleCompleteParent, child: this.h_toggleCompleteChild}}/>
         <TodoForm 
-// Nnnnnnnnnnnnnnnnnnnnice!
           value={this.state.value}
           add={this.h_addItem}
           clear={this.h_clearCompleted}
